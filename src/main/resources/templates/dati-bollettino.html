@@ -6,33 +6,70 @@
     <meta name="description" content="Page Conferma Pagamento">
     <meta name="author" content="Bruna & Imbrea">
 	<link rel="stylesheet" href="css/style.css">
+	
 </head>
 <body>
+<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
 	<div id="header"></div>
 
     <div id="main">
         <div>
-            <h1>Dati Bollettino</h1>
+      <div class="tab-content">
+        <div id="signup">   
+          
+           <h1>Dati Bollettino</h1>
             <p>Compila con i seguenti campi con i dati del bollettino che vuoi pagare:</p>
-        </div>
-        <form id="myForm" action="/pagamento-bollettino" method="post">
-            <label for="conto-corrente">Conto Corrente</label>
-            <input type="number" name="codiceContoDestinatario" id="conto-corrente">
-            <label for="codice-bolletino">Codice Bollettino</label>
-            <input type="text" name="codiceBollettino" id="codice-bolletino">
-            <label for="causale-versamento">Causale Versamento</label>
-            <input type="text" name="causale" id="causale-versamento">
-            <label for="importo">Importo</label>
-            <input type="number" name="importo" id="importo">
-        </form>
-        <button onclick="window.location.href='/home'">Return to Home Page</button>
-        <button type="submit" form="myForm">Change Page</button>
-    </div>
+            
+          <form action="/pagamento-bollettino" method="post">
+          
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                Conto Corrente<span class="req">*</span>
+              </label>
+              <input type="number" required autocomplete="off" name="codiceBollettino"/>
+            </div>
+        
+            <div class="field-wrap">
+              <label>
+                Codice Bollettino<span class="req">*</span>
+              </label>
+              <input type="text"required autocomplete="off" name="codiceContoDestinatario"/>
+            </div>
+          </div>
 
+          <div class="field-wrap">
+            <label>
+              Causale Versamento<span class="req">*</span>
+            </label>
+            <input type="text"required autocomplete="off" name="causale"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              Importo<span class="req">*</span>
+            </label>
+            <input type="number" required autocomplete="off" name="importo"/>
+          </div>
+          
+          <button type="submit" class="button button-block">Get Started</button>
+          
+          </form>
+
+        </div>
+       
+        </div>
+        
+      </div><!-- tab-content -->
+      
+</div> <!-- /form -->
 
     <div id="footer"></div>
     
     <!-- end of the body -->
 	<script src="js/main.js"></script>
+</script>
 </body>
 </html>	
