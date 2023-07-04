@@ -22,6 +22,17 @@ public class Bollettino {
 	private String causale;
 	private String codiceContoDestinatario;
 	private String nomePagatore;
+	private String cognomePagatore;
+	
+	public String getCognomePagatore() {
+		return cognomePagatore;
+	}
+	public void setCognomePagatore(String cognomePagatore) {
+		this.cognomePagatore = cognomePagatore;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	private String codiceCdcPagatore;
 	
 	public String getCodiceBollettino() {

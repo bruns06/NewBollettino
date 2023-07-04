@@ -12,16 +12,16 @@
 
     <div id="main">
         <div>
-            <h1>Dati Bollettino Postale</h1>
-            <p>Compila con i seguenti dati il bollettino che vuoi pagare:</p>
+            <h1>Dati Bollettino</h1>
+            <p>Compila con i seguenti campi con i dati del bollettino che vuoi pagare:</p>
         </div>
         <form id="myForm" action="/pagamento-bollettino" method="post">
             <label for="conto-corrente">Conto Corrente</label>
-            <input type="number" name="contoCorrente" id="conto-corrente">
+            <input type="number" name="codiceContoDestinatario" id="conto-corrente">
             <label for="codice-bolletino">Codice Bollettino</label>
             <input type="text" name="codiceBollettino" id="codice-bolletino">
             <label for="causale-versamento">Causale Versamento</label>
-            <input type="text" name="causaleVersamento" id="causale-versamento">
+            <input type="text" name="causale" id="causale-versamento">
             <label for="importo">Importo</label>
             <input type="number" name="importo" id="importo">
         </form>

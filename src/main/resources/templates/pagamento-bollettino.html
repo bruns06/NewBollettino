@@ -8,18 +8,26 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="header"><h1>CIAO</h1></div>
+    <div id="header"><h1>Pagamento Bollettino</h1></div>
+    
+    <h2>Riassunto bollettino destinatario:</h2>
+    <div class="container">
+    	<div class="card">
+    		<p th:text="${CodiceBollettino}"></p>
+    		<p th:text="${CCDestinatario}"></p>
+    		<p th:text="${Causale}"></p>
+    		<p th:text="${Importo}"></p>
+    	</div>
+    </div>
 
     <div id="main">
         <form id="myForm" action="/conferma-pagamento" method="post">
-            <label for="conto-corrente">Conto Corrente</label>
-            <input type="number" name="contoCorrente" id="conto-corrente">
-            <label for="codice-bolletino">Codice Bollettino</label>
-            <input type="text" name="codiceBollettino" id="codice-bolletino">
-            <label for="causale-versamento">Causale Versamento</label>
-            <input type="text" name="causaleVersamento" id="causale-versamento">
-            <label for="importo">Importo</label>
-            <input type="number" name="importo" id="importo">
+            <label>Numero cDc</label>
+            <input type="number" name="codiceCdcPagatore" id="importo">
+      		<label>Nome</label>
+            <input type="text" name="nomePagatore" id="np">
+            <label>Cognome</label>
+            <input type="text" name="cognomePagatore" id="cp"> 
             <button type="submit">Change Page</button>
         </form>
         
