@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="it">
+<head>
+    <meta charset="utf-8">
+    <title>TITOLO PRIMA PAGINA DA VEDERE NELLA BARRA DI SOPRA</title>
+    <meta name="description" content="Page Pagamento Bollettino">
+    <meta name="author" content="Bruna & Imbrea">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="header"><h1>CIAO</h1></div>
+
+    <div id="main">
+        <form id="myForm" action="/conferma-pagamento" method="post">
+            <label for="conto-corrente">Conto Corrente</label>
+            <input type="number" name="contoCorrente" id="conto-corrente">
+            <label for="codice-bolletino">Codice Bollettino</label>
+            <input type="text" name="codiceBollettino" id="codice-bolletino">
+            <label for="causale-versamento">Causale Versamento</label>
+            <input type="text" name="causaleVersamento" id="causale-versamento">
+            <label for="importo">Importo</label>
+            <input type="number" name="importo" id="importo">
+            <button type="submit">Change Page</button>
+        </form>
+        
+        <button onclick="window.location.href='/home'">Return to Home Game</button>
+    </div>
+
+
+    <div id="footer"></div>
+    <!-- end of the body -->
+    <script src="js/main.js"></script>
+</body>
+</html>

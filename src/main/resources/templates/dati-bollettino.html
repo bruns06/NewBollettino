@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+    <title>Bollettino Postale</title>
+    <meta name="description" content="Page Conferma Pagamento">
+    <meta name="author" content="Bruna & Imbrea">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id="header"></div>
+
+    <div id="main">
+        <div>
+            <h1>Dati Bollettino Postale</h1>
+            <p>Compila con i seguenti dati il bollettino che vuoi pagare:</p>
+        </div>
+        <form id="myForm" action="/pagamento-bollettino" method="post">
+            <label for="conto-corrente">Conto Corrente</label>
+            <input type="number" name="contoCorrente" id="conto-corrente">
+            <label for="codice-bolletino">Codice Bollettino</label>
+            <input type="text" name="codiceBollettino" id="codice-bolletino">
+            <label for="causale-versamento">Causale Versamento</label>
+            <input type="text" name="causaleVersamento" id="causale-versamento">
+            <label for="importo">Importo</label>
+            <input type="number" name="importo" id="importo">
+        </form>
+        <button onclick="window.location.href='/home'">Return to Home Page</button>
+        <button type="submit" form="myForm">Change Page</button>
+    </div>
+
+
+    <div id="footer"></div>
+    
+    <!-- end of the body -->
+	<script src="js/main.js"></script>
+</body>
+</html>	
