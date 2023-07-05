@@ -23,7 +23,22 @@ public class Bollettino {
 	private String codiceContoDestinatario;
 	private String nomePagatore;
 	private String cognomePagatore;
+	private int numeroCdC;
+	private int CVC;
+	private int scadenza;
 	
+	public int getCVC() {
+		return CVC;
+	}
+	public void setCVC(int CVC) {
+		this.CVC = CVC;
+	}
+	public int getScadenza() {
+		return scadenza;
+	}
+	public void setScadenza(int scadenza) {
+		this.scadenza = scadenza;
+	}
 	public String getCognomePagatore() {
 		return cognomePagatore;
 	}
