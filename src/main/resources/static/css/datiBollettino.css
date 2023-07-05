@@ -1,7 +1,23 @@
 @charset "ISO-8859-1";
 
-.content{
+.card{
 	width: 50%;
 	height: 50%;
 	margin: 0 auto;
+	position: relative;
+	top: 100px;
+}
+
+.card-riassunto{
+	position: relative;
+	top: 0px;
+}
+
+h2{
+	 text-decoration: underline;
+}
+
+.card1-mia, .card2-mia{
+	position: relative;
+	margin-top: 175px;
 }

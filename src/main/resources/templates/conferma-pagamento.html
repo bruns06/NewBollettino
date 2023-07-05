@@ -6,29 +6,39 @@
     <meta name="description" content="Page Conferma Pagamento">
     <meta name="author" content="Bruna & Imbrea">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/datiBollettino.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
 	<h1>Riassunto pagamento: </h1>
-	
-	<h2>Riassunto bollettino destinatario:</h2>
-    <div class="container">
-    	<div class="card">
-    		<p th:text="${CodiceBollettino}"></p>
-    		<p th:text="${CCDestinatario}"></p>
-    		<p th:text="${Causale}"></p>
-    		<p th:text="${Importo}"></p>
+	<div class="card1-mia">
+	<div class="container">
+    	<div class="card card-riassunto">
+
+    
+    <h2>Riassunto destinatario</h2>
+    		<p th:text="${'Codice bollettino destinatario: ' + CodiceBollettino}"></p>
+    		<p th:text="${'Codice conto corrente destinatario ' + CCDestinatario}"></p>
+    		<p th:text="${'Causale: ' + Causale}"></p>
+    		<p th:text="${'Importo: ' + Importo}"></p>
     	</div>
+    </div>
+    </div>
+    <div class="card2-mia">
+    <div class="container">
+    	<div class="card card-riassunto">
+    <h2>Riassunto dei tuoi dati:</h2>
+    		<p th:text="${'Nome: ' + NomePaga}"></p>
+    		<p th:text="${'Cognome ' + CognomePaga}"></p>
+    		<p th:text="${'Carta di credito: ' + CdC}"></p>
+    	</div>
+    </div>
     </div>
     
-    <h2>Riassunto dei tuoi dati:</h2>
-    <div class="container">
-    	<div class="card">
-    		<p th:text="${NomePaga}"></p>
-    		<p th:text="${CognomePaga}"></p>
-    		<p th:text="${CdC}"></p>
-    	</div>
-    </div>
 	<!-- end of the body -->
 	<script src="js/main.js"></script>
 </body>
+<style>
+	
+</style>
 </html>

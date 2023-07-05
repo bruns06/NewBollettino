@@ -6,15 +6,19 @@
     <meta name="description" content="Page Conferma Pagamento">
     <meta name="author" content="Bruna & Imbrea">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/datiBollettino.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
 <script src=
 "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 </script>
+
 <div class="card">
   <div class="card-content">
     <div class="content">
+    <h1>Dati Bollettino</h1>
+    <p>Compila i seguenti campi con i dati del bollettino che si desidera pagare: </p>
       <form action="/pagamento-bollettino" method="post">
 	<div class="field">
   <label class="label">Codice Bollettino</label>
@@ -38,7 +42,7 @@
 </div>
 
 <label class="label">Importo</label>
-<div class="field has-addons">
+<div class="field has-addons ">
   <p class="control">
     <span class="select">
       <select>
@@ -48,13 +52,13 @@
       </select>
     </span>
   </p>
-  <p class="control">
+  <p class="control is-expanded">
     <input class="input" type="number" name="importo" placeholder="">
   </p>
 </div>
 
 <div class="control">
-  <button class="button is-primary">Submit</button>
+  <button class="button is-primary is-fullwidth is-medium">Submit</button>
 </div>
 
 </form>
