@@ -6,70 +6,67 @@
     <meta name="description" content="Page Conferma Pagamento">
     <meta name="author" content="Bruna & Imbrea">
 	<link rel="stylesheet" href="css/style.css">
-	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
 <script src=
 "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 </script>
-	<div id="header"></div>
+<div class="card">
+  <div class="card-content">
+    <div class="content">
+      <form action="/pagamento-bollettino" method="post">
+	<div class="field">
+  <label class="label">Codice Bollettino</label>
+  <div class="control">
+    <input class="input" name="codiceBollettino" type="text" placeholder="">
+  </div>
+</div>
 
-    <div id="main">
-        <div>
-      <div class="tab-content">
-        <div id="signup">   
-          
-           <h1>Dati Bollettino</h1>
-            <p>Compila con i seguenti campi con i dati del bollettino che vuoi pagare:</p>
-            
-          <form action="/pagamento-bollettino" method="post">
-          
-          <div class="top-row">
-            <div class="field-wrap">
-              <label>
-                Conto Corrente<span class="req">*</span>
-              </label>
-              <input type="number" required autocomplete="off" name="codiceBollettino"/>
-            </div>
-        
-            <div class="field-wrap">
-              <label>
-                Codice Bollettino<span class="req">*</span>
-              </label>
-              <input type="text"required autocomplete="off" name="codiceContoDestinatario"/>
-            </div>
-          </div>
+<div class="field">
+  <label class="label">Conto corrente destinatario</label>
+  <div class="control">
+    <input class="input"  name="codiceContoDestinatario" type="number" placeholder="">
+  </div>
+</div>
 
-          <div class="field-wrap">
-            <label>
-              Causale Versamento<span class="req">*</span>
-            </label>
-            <input type="text"required autocomplete="off" name="causale"/>
-          </div>
-          
-          <div class="field-wrap">
-            <label>
-              Importo<span class="req">*</span>
-            </label>
-            <input type="number" required autocomplete="off" name="importo"/>
-          </div>
-          
-          <button type="submit" class="button button-block">Get Started</button>
-          
-          </form>
+<div class="field">
+  <label class="label">Causale</label>
+  <div class="control">
+    <input class="input" type="text" name="causale" placeholder="">
+  </div>
+</div>
 
-        </div>
-       
-        </div>
-        
-      </div><!-- tab-content -->
-      
-</div> <!-- /form -->
+<label class="label">Importo</label>
+<div class="field has-addons">
+  <p class="control">
+    <span class="select">
+      <select>
+        <option>$</option>
+        <option>£</option>
+        <option>€</option>
+      </select>
+    </span>
+  </p>
+  <p class="control">
+    <input class="input" type="number" name="importo" placeholder="">
+  </p>
+</div>
+
+<div class="control">
+  <button class="button is-primary">Submit</button>
+</div>
+
+</form>
+    </div>
+  </div>
+</div>
+
 
     <div id="footer"></div>
     
     <!-- end of the body -->
 	<script src="js/main.js"></script>
-</script>
+
 </body>
 </html>	
