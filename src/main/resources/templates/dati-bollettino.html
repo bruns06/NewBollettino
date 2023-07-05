@@ -13,10 +13,15 @@
 <script src=
 "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 </script>
+<canvas id="canvas-basic"> </canvas>
+
+
 
 <div class="card">
+
   <div class="card-content">
     <div class="content">
+    
     <h1>Dati Bollettino</h1>
     <p>Compila i seguenti campi con i dati del bollettino che si desidera pagare: </p>
       <form action="/pagamento-bollettino" method="post">
@@ -62,8 +67,10 @@
 </div>
 
 </form>
+
     </div>
   </div>
+ 
 </div>
 
 
@@ -71,6 +78,37 @@
     
     <!-- end of the body -->
 	<script src="js/main.js"></script>
+	<script type="text/javascript" src = "granim.js-2.0.0/dist/granim.js"></script>
+	<script type="text/javascript" src = "js/gran.js"></script>
 
 </body>
+
+<script>
+
+var granimInstance = new Granim({
+    element: '#canvas-basic',
+    direction: 'left-right',
+    isPausedWhenNotInView: true,
+    states : {
+        "default-state": {
+            gradients: [
+                ['#ff9966', '#ff5e62'],
+                ['#00F260', '#0575E6'],
+                ['#e1eec3', '#f05053']
+            ]
+        }
+    }
+});</script>
+<style>
+	#canvas-basic {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+</style>
 </html>	
