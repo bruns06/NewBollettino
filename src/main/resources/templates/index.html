@@ -6,22 +6,63 @@
     <meta name="description" content="Page Conferma Pagamento">
     <meta name="author" content="Bruna & Imbrea">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
 	
-
+<canvas id="canvas-basic"></canvas>
+<div class="home-view">
     <div id="main">
-        <h1>TITOLO</h1>
+        <h1 style="font-size: 192px;">BollettinoPay</h1>
     </div>
     
     <div id="header">
         <div id="top-nav">
-            <button onclick="window.location.href='/dati-bollettino'">Procedi</button>
+            <button class=" butn button is-primary is-medium" onclick="window.location.href='/dati-bollettino'">Paga un bollettino</button>
         </div>
     </div>
-
+</div>
     <div id="footer"></div>
 	<!-- end of the body -->
-	<script src="js/main.js"></script>
+		<script src="js/main.js"></script>
+<script src="js/main.js"></script>
+    <script type="text/javascript" src = "granim.js-2.0.0/dist/granim.js"></script>
+	<script type="text/javascript" src = "js/gran.js"></script>
+    <script>
+
+var granimInstance = new Granim({
+    element: '#canvas-basic',
+    direction: 'left-right',
+    isPausedWhenNotInView: true,
+    states : {
+        "default-state": {
+            gradients: [
+                ['#ff9966', '#ff5e62'],
+                ['#00F260', '#0575E6'],
+                ['#e1eec3', '#f05053']
+            ]
+        }
+    }
+});</script>
+
 </body>
+<style>
+	#canvas-basic {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+	.home-view{
+		position: relative;
+		top: 200px;
+		left: 250px;
+	}
+</style>
 </html>
