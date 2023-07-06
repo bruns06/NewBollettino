@@ -6,4 +6,5 @@ import com.bollettino.entities.ContoAbilitato;
 
 public interface ContoAbilitatoDAO extends JpaRepository<ContoAbilitato, Integer> {
 
+	ContoAbilitato findByCodiceConto(String codiceConto);
 }
