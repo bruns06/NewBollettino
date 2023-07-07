@@ -1,5 +1,7 @@
 package com.bollettino.presentation;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,14 +67,26 @@ public class ControllerMVC {
 	}
 
 	@PostMapping("/pagamento-bollettino")
-	public String confermaPagamento(Model m, Bollettino b) {	
+	public String confermaPagamento(@ModelAttribute Bollettino b, Model m) {	
 		
+		String nome = b.getNomePagatore();
+		String cognome = b.getCognomePagatore();
+		int numeroCarta = b.getNumeroCdC();
 		Bollettino formBollettino = new Bollettino();
 		String codiceBollettino = b.getCodiceBollettino();
 		formBollettino.setCodiceBollettino(codiceBollettino);
 		//dao.save(formBollettino);
 		
 		int bollettinoId = dao.findLastId();
+		Optional<Bollettino> bollettinoOptional = dao.findById(bollettinoId);
+		Bollettino existingBollettino = bollettinoOptional.get();
+        
+        existingBollettino.setNomePagatore(nome);
+        existingBollettino.setCognomePagatore(cognome);
+        existingBollettino.setNumeroCdC(numeroCarta);
+        
+        // Save the updated row in the database
+        dao.save(existingBollettino);
 		
 		//Bollettino bollettino = dao.findById(bollettinoId).orElse(null);
 		//System.out.println(bollettino);
