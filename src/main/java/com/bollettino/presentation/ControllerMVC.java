@@ -33,12 +33,12 @@ public class ControllerMVC {
 		return "index.html";
 	}
 	
-	@GetMapping("/dati-bollettino")
+	@GetMapping("/pagina-dati-bollettino")
 	public String datiBollettino() {
 		return "dati-bollettino";
 	}
 	
-	@PostMapping("/pagamento-bollettino")
+	@PostMapping("/dati-bollettino")
 	public String pagamentoBollettino(@ModelAttribute Bollettino b, Model m) {
 		service.addDatiBollettino(b);
 			
@@ -47,37 +47,41 @@ public class ControllerMVC {
 		m.addAttribute("Causale", b.getCausale());
 		m.addAttribute("Importo", b.getImporto());
 		
+		
+		
+		String codiceContoCorrente = b.getCodiceContoDestinatario();
+		boolean codiceContoCorrenteExists = contoAbilitatoService.existsContoCorrente(codiceContoCorrente);
+		
+		//FUNZIA se inserisce il codice conto corrente lo riceviamo e lo controlla
+		if(!codiceContoCorrenteExists) {
+			
+			String errorMessage = "Codice conto corrente errato";
+			m.addAttribute("errorMessage", errorMessage);
+			
+			return "errore.html";
+		}
+		
+		return "pagamento-bollettino";
+	}
+
+	@PostMapping("/pagamento-bollettino")
+	public String confermaPagamento(Model m, Bollettino b) {	
+		
 		Bollettino formBollettino = new Bollettino();
 		String codiceBollettino = b.getCodiceBollettino();
 		formBollettino.setCodiceBollettino(codiceBollettino);
 		//dao.save(formBollettino);
 		
 		int bollettinoId = dao.findLastId();
-		Bollettino bollettino = dao.findById(bollettinoId).orElse(null);
+		
+		//Bollettino bollettino = dao.findById(bollettinoId).orElse(null);
 		//System.out.println(bollettino);
 		//funzia anche la query per trovare l'id MAX
 		System.out.println(bollettinoId);
 		
-		String codiceContoCorrente = b.getCodiceContoDestinatario();
-		boolean codiceContoCorrenteExists = contoAbilitatoService.existsContoCorrente(codiceContoCorrente);
-		
-		//FUNZIA se inserisce il codice conto corrente lo riceviamo e lo controlla
-		if(codiceContoCorrenteExists) {
-			System.out.println(codiceContoCorrente);
-		}
-		else
-		{
-			System.out.println("non funzia");
-		}
-		return "pagamento-bollettino";
-	}
-
-	@PostMapping("/conferma-pagamento")
-	public String confermaPagamento(Model m, Bollettino b) {	
-		
 		m.addAttribute("NomePaga", b.getNomePagatore());
 		m.addAttribute("CognomePaga", b.getCognomePagatore());
-		m.addAttribute("CdC", b.getCodiceCdcPagatore());
+		m.addAttribute("CdC", b.getNumeroCdC());
 		
 		return "conferma-pagamento";
 	}

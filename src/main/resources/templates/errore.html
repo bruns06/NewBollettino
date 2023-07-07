@@ -8,8 +8,16 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<h1>ciao</h1>
+	
+	<div id="errorMessage"></div>
 	<!-- end of the body -->
-	<script src="js/main.js"></script>
+	<script th:inline="javascript">
+		var errorMessage = [[${errorMessage}]];
+		
+		if (errorMessage) {
+            var errorMessageElement = document.getElementById("errorMessage");
+            errorMessageElement.textContent = errorMessage;
+        }
+	</script>
 </body>
 </html>
