@@ -23,7 +23,7 @@ public class Bollettino {
 	private double importo;
 	private String nomePagatore;
 	private String cognomePagatore;
-	private int numeroCdC;
+	private long numeroCdC;
 	
 	public int getId() {
 		return id;
@@ -67,10 +67,10 @@ public class Bollettino {
 	public void setCognomePagatore(String cognomePagatore) {
 		this.cognomePagatore = cognomePagatore;
 	}
-	public int getNumeroCdC() {
+	public long getNumeroCdC() {
 		return numeroCdC;
 	}
-	public void setNumeroCdC(int numeroCdC) {
+	public void setNumeroCdC(long numeroCdC) {
 		this.numeroCdC = numeroCdC;
 	}
 	

@@ -14,6 +14,7 @@ import com.bollettino.entities.Bollettino;
 import com.bollettino.repo.BollettinoDAO;
 import com.bollettino.service.BollettinoService;
 import com.bollettino.service.ContoAbilitatoService;
+import com.bollettino.service.ValidationService;
 
 
 @Controller
@@ -29,6 +30,9 @@ public class ControllerMVC {
 	
 	@Autowired
 	BollettinoDAO dao;
+	
+	@Autowired
+	ValidationService serviceValidation;
 	 
 	@GetMapping({"/", "home", "index"})
 	public String home() {
@@ -42,26 +46,64 @@ public class ControllerMVC {
 	
 	@PostMapping("/dati-bollettino")
 	public String pagamentoBollettino(@ModelAttribute Bollettino b, Model m) {
-		service.addDatiBollettino(b);
-			
-		m.addAttribute("CodiceBollettino", b.getCodiceBollettino());
-		m.addAttribute("CCDestinatario", b.getCodiceContoDestinatario());
-		m.addAttribute("Causale", b.getCausale());
-		m.addAttribute("Importo", b.getImporto());
-		
-		
 		
 		String codiceContoCorrente = b.getCodiceContoDestinatario();
+		String codiceBollettino = b.getCodiceBollettino();
+		String causale = b.getCausale();
+		double importo = b.getImporto();
 		boolean codiceContoCorrenteExists = contoAbilitatoService.existsContoCorrente(codiceContoCorrente);
 		
-		//FUNZIA se inserisce il codice conto corrente lo riceviamo e lo controlla
-		if(!codiceContoCorrenteExists) {
+		// Controllo back-end tramite REGEX del codiceContoCorrente
+		if(!serviceValidation.validateCodiceContoCorrente(codiceContoCorrente)) {
 			
 			String errorMessage = "Codice conto corrente errato";
 			m.addAttribute("errorMessage", errorMessage);
 			
 			return "errore.html";
 		}
+		
+		// Controllo back-end tramite REGEX del codiceBollettino
+		if(!serviceValidation.validateCodiceBollettino(codiceBollettino)) {
+			
+			String errorMessage = "Codice bollettino errato";
+			m.addAttribute("errorMessage", errorMessage);
+					
+			return "errore.html";
+		}
+		
+		// Controllo back-end tramite REGEX del codiceBollettino
+		if(!serviceValidation.validateCausale(causale)) {
+					
+			String errorMessage = "Causale contine caratteri non validi";
+			m.addAttribute("errorMessage", errorMessage);
+			
+			return "errore.html";
+		}
+		
+		// Controllo back-end tramite REGEX del codiceBollettino
+		if(!serviceValidation.validateImporto(importo)) {
+							
+			String errorMessage = "Importo inserito non valido";
+			m.addAttribute("errorMessage", errorMessage);
+					
+			return "errore.html";
+		}
+		
+		//FUNZIA se inserisce il codice conto corrente lo riceviamo e lo controlla
+		if(!codiceContoCorrenteExists) {
+					
+			String errorMessage = "Codice conto corrente non abilitato";
+			m.addAttribute("errorMessage", errorMessage);
+			
+			return "errore.html";
+		}
+		
+		service.addDatiBollettino(b);
+			
+		m.addAttribute("CodiceBollettino", b.getCodiceBollettino());
+		m.addAttribute("CCDestinatario", b.getCodiceContoDestinatario());
+		m.addAttribute("Causale", b.getCausale());
+		m.addAttribute("Importo", b.getImporto());
 		
 		return "pagamento-bollettino";
 	}
@@ -71,27 +113,51 @@ public class ControllerMVC {
 		
 		String nome = b.getNomePagatore();
 		String cognome = b.getCognomePagatore();
-		int numeroCarta = b.getNumeroCdC();
-		Bollettino formBollettino = new Bollettino();
-		String codiceBollettino = b.getCodiceBollettino();
-		formBollettino.setCodiceBollettino(codiceBollettino);
-		//dao.save(formBollettino);
+		long numeroCarta = b.getNumeroCdC();
+		System.out.println(numeroCarta);
+		//FUNZIA se inserisce il codice conto corrente lo riceviamo e lo controlla
+		if(!serviceValidation.validateNomePagatore(nome)) {
+							
+			String errorMessage = "Nome inserito non corretto";
+			m.addAttribute("errorMessage", errorMessage);
+					
+			return "errore.html";
+		}
 		
+		//FUNZIA se inserisce il codice conto corrente lo riceviamo e lo controlla
+		if(!serviceValidation.validateCognomePagatore(cognome)) {
+									
+			String errorMessage = "Cognome inserito non corretto";
+			m.addAttribute("errorMessage", errorMessage);
+							
+			return "errore.html";
+		}
+		
+		//FUNZIA se inserisce il codice conto corrente lo riceviamo e lo controlla
+		if(!serviceValidation.validateNumeroCarta(numeroCarta)) {
+									
+			String errorMessage = "Numero carta non corretto";
+			m.addAttribute("errorMessage", errorMessage);
+							
+			return "errore.html";
+		}
+		
+		//Mi ricavo l'Id dal DB
 		int bollettinoId = dao.findLastId();
 		Optional<Bollettino> bollettinoOptional = dao.findById(bollettinoId);
-		Bollettino existingBollettino = bollettinoOptional.get();
-        
-        existingBollettino.setNomePagatore(nome);
-        existingBollettino.setCognomePagatore(cognome);
-        existingBollettino.setNumeroCdC(numeroCarta);
-        
-        // Save the updated row in the database
-        dao.save(existingBollettino);
 		
-		//Bollettino bollettino = dao.findById(bollettinoId).orElse(null);
-		//System.out.println(bollettino);
-		//funzia anche la query per trovare l'id MAX
-		System.out.println(bollettinoId);
+		if (bollettinoOptional.isPresent()) {
+			//Se bollettinoOptional contiene dei valori, verificato tramite bollettinoOptional.isPresent,
+			//vado a prendere la tutti i valori della riga dal DB creando un object chiamato existingBollettino.
+			Bollettino existingBollettino = bollettinoOptional.get();
+			existingBollettino.setNomePagatore(nome);
+	        existingBollettino.setCognomePagatore(cognome);
+	        existingBollettino.setNumeroCdC(numeroCarta);
+	        
+	        //Salva la riga presa dal DB sulla stessa riga
+	        dao.save(existingBollettino);
+		}
+        
 		
 		m.addAttribute("NomePaga", b.getNomePagatore());
 		m.addAttribute("CognomePaga", b.getCognomePagatore());
