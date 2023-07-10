@@ -28,14 +28,14 @@
 	<div class="field">
   <label class="label">Codice Bollettino</label>
   <div class="control">
-    <input class="input" name="codiceBollettino" type="text" placeholder="">
+    <input id="bollettino" class="input" name="codiceBollettino" type="text" required placeholder="0123456789abcdefgh">
   </div>
 </div>
 
 <div class="field">
   <label class="label">Conto corrente destinatario</label>
   <div class="control">
-    <input class="input"  name="codiceContoDestinatario" type="number" placeholder="">
+    <input class="input"  name="codiceContoDestinatario" type="number" required replaceholder="123456">
   </div>
 </div>
 
@@ -58,8 +58,7 @@
     </span>
   </p>
   <p class="control is-expanded">
-    <input class="input" type="number" name="importo" step="0.01" placeholder="" required pattern="^\d{1,6}(\.\d{2})?$">
-    <!-- sistemare l'input di importo -->
+    <input class="input" type="number" name="importo" step="0.01" placeholder="00,00" required pattern="^\d{1,6}[.,]\d{2}?$">
   </p>
 </div>
 

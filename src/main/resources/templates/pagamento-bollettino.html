@@ -34,35 +34,35 @@
 	<div class="field">
   <label class="label">Numero carta di credito</label>
   <div class="control">
-    <input class="input" name="numeroCdC" type="tel" placeholder="">
+    <input class="input" name="numeroCdC" type="tel" required pattern="^(?:\d[ -]*?){13,16}$" placeholder="0123456789123456">
   </div>
 </div>
 
 <div class="field">
   <label class="label">Nome</label>
   <div class="control">
-    <input class="input"  name="nomePagatore" type="text" placeholder="">
+    <input class="input"  name="nomePagatore" type="text" required pattern="[A-Za-z\s-]{2,}" placeholder="Marco">
   </div>
 </div>
 
 <div class="field">
   <label class="label">Cognome</label>
   <div class="control">
-    <input class="input" type="text" name="cognomePagatore" placeholder="">
+    <input class="input" type="text" name="cognomePagatore" required pattern="[A-Za-z\s-]{2,}" placeholder="Rossi">
   </div>
 </div>
 
 <div class="field">
   <label class="label">CVC</label>
   <div class="control">
-    <input class="input" type="text" name="CVC" placeholder="">
+    <input class="input" type="text" name="CVC" required pattern="^\d{3,4}$" placeholder="1234">
   </div>
 </div>
 
 <div class="field">
   <label class="label">Scadenza</label>
   <div class="control">
-    <input class="input" type="text" name="scadenza" placeholder="">
+    <input class="input" type="text" name="scadenza" required pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$" placeholder="12/28">
   </div>
 </div>
 
@@ -81,7 +81,9 @@
 
     <div id="footer"></div>
     <!-- end of the body -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js">
+		
+	</script>
     <script type="text/javascript" src = "granim.js-2.0.0/dist/granim.js"></script>
 	<script type="text/javascript" src = "js/gran.js"></script>
     <script>

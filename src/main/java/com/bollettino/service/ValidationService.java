@@ -8,10 +8,10 @@ public class ValidationService {
 	private static final String CODICE_CONTO_CORRENTE_REGEX = "^\\d{6}$";
     private static final String CODICE_BOLLETTINO_REGEX = "^[a-zA-Z0-9]{18}$";
     private static final String CAUSALE_REGEX = "^[\\p{L}\\p{N}\\p{P}\\p{S}\\p{Z}]{0,255}$";
-    private static final String IMPORTO_REGEX = "^\\d{1,5}([.,]\\d{2})?$";
+    private static final String IMPORTO_REGEX = "^\\d{1,6}[.,]\\d{2}?$";
     private static final String NOME_REGEX = "[A-Za-z\\s-]{2,}";
     private static final String COGNOME_REGEX = "[A-Za-z\\s-]{2,}";
-    private static final String NUMERO_CARTA_REGEX = "^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$";
+    private static final String NUMERO_CARTA_REGEX = "^(?:\\d[ -]*?){13,16}$";
     
     public boolean validateCodiceContoCorrente(String codiceContoCorrente) {
         return codiceContoCorrente.matches(CODICE_CONTO_CORRENTE_REGEX);

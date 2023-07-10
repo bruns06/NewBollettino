@@ -56,7 +56,7 @@ public class ControllerMVC {
 		// Controllo back-end tramite REGEX del codiceContoCorrente
 		if(!serviceValidation.validateCodiceContoCorrente(codiceContoCorrente)) {
 			
-			String errorMessage = "Codice conto corrente errato";
+			String errorMessage = "Codice conto corrente errato. Controlla che esso sia lungo 6 caratteri ed essi siano solo numeri.";
 			m.addAttribute("errorMessage", errorMessage);
 			
 			return "errore.html";
@@ -65,7 +65,7 @@ public class ControllerMVC {
 		// Controllo back-end tramite REGEX del codiceBollettino
 		if(!serviceValidation.validateCodiceBollettino(codiceBollettino)) {
 			
-			String errorMessage = "Codice bollettino errato";
+			String errorMessage = "Codice bollettino errato. Controlla che esso sia lungo 18 caratteri tra numeri e lettere.";
 			m.addAttribute("errorMessage", errorMessage);
 					
 			return "errore.html";
@@ -74,7 +74,7 @@ public class ControllerMVC {
 		// Controllo back-end tramite REGEX della causale
 		if(!serviceValidation.validateCausale(causale)) {
 					
-			String errorMessage = "Causale contine caratteri non validi";
+			String errorMessage = "Causale contiene caratteri non validi.";
 			m.addAttribute("errorMessage", errorMessage);
 			
 			return "errore.html";
@@ -83,16 +83,16 @@ public class ControllerMVC {
 		// Controllo back-end tramite REGEX dell'importo
 		if(!serviceValidation.validateImporto(importo)) {
 							
-			String errorMessage = "Importo inserito non valido";
+			String errorMessage = "Importo inserito non valido. Controlla che tu abbia inserito l'importo correttamente scrivendo 00.00 oppure 00,00";
 			m.addAttribute("errorMessage", errorMessage);
 					
 			return "errore.html";
 		}
 		
-		//FUNZIA se inserisce il codice conto corrente lo riceviamo e lo controlla
+		// Controllo se è presente conto corrente nel DB nella tabella ContoAbilitato
 		if(!codiceContoCorrenteExists) {
 					
-			String errorMessage = "Codice conto corrente non abilitato";
+			String errorMessage = "Codice conto corrente non abilitato.";
 			m.addAttribute("errorMessage", errorMessage);
 			
 			return "errore.html";
@@ -118,7 +118,7 @@ public class ControllerMVC {
 		//FUNZIA se inserisce il codice conto corrente lo riceviamo e lo controlla
 		if(!serviceValidation.validateNomePagatore(nome)) {
 							
-			String errorMessage = "Nome inserito non corretto";
+			String errorMessage = "Nome inserito non corretto. Controlla che l'iniziale sia maiuscola.";
 			m.addAttribute("errorMessage", errorMessage);
 					
 			return "errore.html";
@@ -127,7 +127,7 @@ public class ControllerMVC {
 		//FUNZIA se inserisce il codice conto corrente lo riceviamo e lo controlla
 		if(!serviceValidation.validateCognomePagatore(cognome)) {
 									
-			String errorMessage = "Cognome inserito non corretto";
+			String errorMessage = "Cognome inserito non corretto. Controlla che l'iniziale sia maiuscola.";
 			m.addAttribute("errorMessage", errorMessage);
 							
 			return "errore.html";
@@ -136,7 +136,7 @@ public class ControllerMVC {
 		//FUNZIA se inserisce il codice conto corrente lo riceviamo e lo controlla
 		if(!serviceValidation.validateNumeroCarta(numeroCarta)) {
 									
-			String errorMessage = "Numero carta non corretto";
+			String errorMessage = "Numero carta non corretto. Controlla che il numero della carta di credito sia composto tra 13 e 16 caratteri tutti numerici.";
 			m.addAttribute("errorMessage", errorMessage);
 							
 			return "errore.html";
