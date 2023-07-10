@@ -71,7 +71,7 @@ public class ControllerMVC {
 			return "errore.html";
 		}
 		
-		// Controllo back-end tramite REGEX del codiceBollettino
+		// Controllo back-end tramite REGEX della causale
 		if(!serviceValidation.validateCausale(causale)) {
 					
 			String errorMessage = "Causale contine caratteri non validi";
@@ -80,7 +80,7 @@ public class ControllerMVC {
 			return "errore.html";
 		}
 		
-		// Controllo back-end tramite REGEX del codiceBollettino
+		// Controllo back-end tramite REGEX dell'importo
 		if(!serviceValidation.validateImporto(importo)) {
 							
 			String errorMessage = "Importo inserito non valido";
@@ -155,7 +155,7 @@ public class ControllerMVC {
 	        existingBollettino.setNumeroCdC(numeroCarta);
 	        
 	        //Salva la riga presa dal DB sulla stessa riga
-	        dao.save(existingBollettino);
+	        service.addDatiBollettino(existingBollettino);
 		}
         
 		

@@ -18,7 +18,6 @@ public class BollettinoService {
 		return dao.findAll();
 	}
 	
-	// Vado a salvare l'entity Bollettino nel DB ma a quale motivo lo faccio qua?
 	public void addDatiBollettino(Bollettino b) {
 		dao.save(b);
 	}
