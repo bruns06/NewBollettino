@@ -17,4 +17,9 @@ public class ContoAbilitatoService {
 	public List<ContoAbilitato> getContoAbilitato(){
 		return dao.findAll();
 	}
+	
+	public boolean existsContoCorrente(String codiceConto) {
+		ContoAbilitato contoAbilitato = dao.findByCodiceConto(codiceConto);
+		return contoAbilitato != null;
+	}
 }

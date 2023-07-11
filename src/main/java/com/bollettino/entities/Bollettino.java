@@ -17,50 +17,31 @@ public class Bollettino {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String codiceBollettino;
-	private double importo;
-	private String causale;
 	private String codiceContoDestinatario;
+	private String codiceBollettino;
+	private String causale;
+	private double importo;
 	private String nomePagatore;
 	private String cognomePagatore;
-	private int numeroCdC;
-	private int CVC;
-	private int scadenza;
+	private long numeroCdC;
 	
-	public int getCVC() {
-		return CVC;
-	}
-	public void setCVC(int CVC) {
-		this.CVC = CVC;
-	}
-	public int getScadenza() {
-		return scadenza;
-	}
-	public void setScadenza(int scadenza) {
-		this.scadenza = scadenza;
-	}
-	public String getCognomePagatore() {
-		return cognomePagatore;
-	}
-	public void setCognomePagatore(String cognomePagatore) {
-		this.cognomePagatore = cognomePagatore;
+	public int getId() {
+		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	private String codiceCdcPagatore;
-	
+	public String getCodiceContoDestinatario() {
+		return codiceContoDestinatario;
+	}
+	public void setCodiceContoDestinatario(String codiceConto) {
+		this.codiceContoDestinatario = codiceConto;
+	}
 	public String getCodiceBollettino() {
 		return codiceBollettino;
 	}
 	public void setCodiceBollettino(String codiceBollettino) {
 		this.codiceBollettino = codiceBollettino;
-	}
-	public double getImporto() {
-		return importo;
-	}
-	public void setImporto(double importo) {
-		this.importo = importo;
 	}
 	public String getCausale() {
 		return causale;
@@ -68,11 +49,11 @@ public class Bollettino {
 	public void setCausale(String causale) {
 		this.causale = causale;
 	}
-	public String getCodiceContoDestinatario() {
-		return codiceContoDestinatario;
+	public double getImporto() {
+		return importo;
 	}
-	public void setCodiceContoDestinatario(String codiceContoDestinatario) {
-		this.codiceContoDestinatario = codiceContoDestinatario;
+	public void setImporto(double importo) {
+		this.importo = importo;
 	}
 	public String getNomePagatore() {
 		return nomePagatore;
@@ -80,14 +61,17 @@ public class Bollettino {
 	public void setNomePagatore(String nomePagatore) {
 		this.nomePagatore = nomePagatore;
 	}
-	public String getCodiceCdcPagatore() {
-		return codiceCdcPagatore;
+	public String getCognomePagatore() {
+		return cognomePagatore;
 	}
-	public void setCodiceCdcPagatore(String codiceCdcPagatore) {
-		this.codiceCdcPagatore = codiceCdcPagatore;
+	public void setCognomePagatore(String cognomePagatore) {
+		this.cognomePagatore = cognomePagatore;
 	}
-	public int getId() {
-		return id;
+	public long getNumeroCdC() {
+		return numeroCdC;
+	}
+	public void setNumeroCdC(long numeroCdC) {
+		this.numeroCdC = numeroCdC;
 	}
 	
 }
