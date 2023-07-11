@@ -6,10 +6,37 @@
     <meta name="description" content="Error Page">
     <meta name="author" content="Bruna & Imbrea">
 	<link rel="stylesheet" href="css/style.css">
+	<style>
+		h1{
+			font-size:50px;
+			color: red;
+			}
+		div{
+			font-size:30px;
+		}
+		button {
+		  margin-top: 10px;
+		  padding: 10px;
+		  font-size: 20px;
+		  padding: 0.5em 1em;
+		  border-radius: 0.5em;
+		  border: none;
+		  background-color: #4CAF50;
+		  color: white;
+		  cursor: pointer;
+		  transition: all 0.2s ease-in-out;
+		}
+		
+		button:hover {
+		  transform: scale(1.1);
+		}
+		
+	</style>
 </head>
 <body>
-	
+	<h1>Pagina di errore</h1>
 	<div id="errorMessage"></div>
+	<button onclick="window.location.href='/home'">HomePage</button>
 	<!-- end of the body -->
 	<script th:inline="javascript">
 		var errorMessage = [[${errorMessage}]];
