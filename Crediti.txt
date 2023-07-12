@@ -1,0 +1,10 @@
+Autori del progetto Bollettini postali:
+Bruna Pietro Paolo
+Imbrea Ioan Petrisor
+
+Entrambi ci siamo occupati di sviluppare a 360 gradi il codice, però ognuno di noi ha sviluppato o ritoccato
+pezzi sviluppati dall'altro. 
+Ioan: ha sviluppato principalmente la parte della validation, la parte di controllo con il DB del conto abilitato, ma ha anche ritoccato il resto del codice per renderlo più semplice da comprendere e da utilizzare con i suoi vari aspetti.
+Paolo: ha sviluppato principalmente la parte del front-end, la struttura in html con thymeleaf per mostrare i risultati, ma ha anche ritoccato il resto del codice per renderlo più semplice da comprendere e da utilizzare con i suoi vari aspetti.
+
+Ciò che non viene menzionato rispetto ai singoli di noi è stato sviluppato in pair coding.
